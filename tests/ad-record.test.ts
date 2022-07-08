@@ -8,12 +8,12 @@ const defaultObj = {
 }
 
 test('Can build AdRecord', () => {
-    const ad = new AdRecord(defaultObj);
+    const honey = new AdRecord(defaultObj);
 
-    expect(ad.name).toBe('xJakis name');
-    expect(ad.origin).toBe('adad');
-    expect(ad.price).toBe(9)
-    expect(ad.capacity).toBe(12)
+    expect(honey.name).toBe('xJakis name');
+    expect(honey.origin).toBe('adad');
+    expect(honey.price).toBe(9)
+    expect(honey.capacity).toBe(12)
 });
 
 test('Can build AdRecord', () => {

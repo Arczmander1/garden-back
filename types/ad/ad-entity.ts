@@ -5,3 +5,7 @@ export interface AdEntity {
     origin: string;
     capacity: number;
 }
+
+export interface NewAdEntity extends Omit <AdEntity, 'id'> {
+    id?: string;
+}
