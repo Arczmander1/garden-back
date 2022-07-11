@@ -1,19 +1,19 @@
-import {AdEntity, NewAdEntity, SimpleAdEntity} from "../types";
+import {GardenEntity, NewGardenEntity, SimpleGardenEntity} from "../types";
 import {ValidationError} from "../utils/errors";
 import {FieldPacket} from "mysql2";
 import {pool} from "../utils/db";
 import {v4 as uuid} from 'uuid';
 
-type AdRecordResults = [AdEntity[], FieldPacket[]];
+type GardenRecordResults = [GardenEntity[], FieldPacket[]];
 
-export class AdRecord implements AdEntity {
+export class GardenRecord implements GardenEntity {
     public id: string;
     public name: string;
     public price: number;
     public origin: string;
     public capacity: number;
 
-    constructor(obj: NewAdEntity) {
+    constructor(obj: NewGardenEntity) {
         if (!obj.name || obj.name.length > 50) {
             throw new ValidationError('Nazwa produktu nie może być pusta i musi mieć mniej niż 50 znaków.');
         }
@@ -38,19 +38,19 @@ export class AdRecord implements AdEntity {
 
     }
 
-    static async getOne(id: string): Promise<AdRecord | null> {
+    static async getOne(id: string): Promise<GardenRecord | null> {
         const [results] = await pool.execute("SELECT * FROM `honeys` WHERE id = :id", {
             id,
-        }) as AdRecordResults;
+        }) as GardenRecordResults;
 
 
-        return results.length === 0 ? null : new AdRecord(results[0]);
+        return results.length === 0 ? null : new GardenRecord(results[0]);
     }
 
-    static async findAll(name: string): Promise<SimpleAdEntity[]> {
+    static async findAll(name: string): Promise<SimpleGardenEntity[]> {
         const [results] = await pool.execute("SELECT * FROM `honeys` WHERE `name` LIKE :search", {
             search: `%${name}%`,
-        }) as AdRecordResults;
+        }) as GardenRecordResults;
 
         return results.map(result => {
             const {id} = result;
@@ -58,7 +58,7 @@ export class AdRecord implements AdEntity {
         });
     }
 
-    async insert(): Promise <void> {
+    async insert(): Promise<void> {
 
         if (!this.id) {
             this.id = uuid();

@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'express-async-errors';
 import {handleError, ValidationError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
+import {gardenRouter} from './routers/garden.router';
 
 const app = express();
 
@@ -19,8 +20,10 @@ app.use(rateLimit({
 )
 
 app.get('/', async () => {
-    throw new ValidationError('asdasd')
+    throw new ValidationError('Mamy problem')
 })
+
+app.use('/garden', gardenRouter)
 
 app.use(handleError);
 
