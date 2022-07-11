@@ -13,8 +13,8 @@ app.use(cors({
 app.use(json());
 
 app.use(rateLimit({
-    windowMs: 10 * 60 * 1000,
-    max: 100,
+        windowMs: 10 * 60 * 1000,
+        max: 100,
     })
 )
 
@@ -24,6 +24,6 @@ app.get('/', async () => {
 
 app.use(handleError);
 
-app.listen(3001,'0.0.0.0', ()=>{
+app.listen(3001, '0.0.0.0', () => {
     console.log('lsitening on port http://localhost:3001');
 });
