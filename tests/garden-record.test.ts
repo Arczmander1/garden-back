@@ -5,7 +5,7 @@ const defaultObj = {
     price: 9,
     origin: 'adad',
     capacity: 12,
-}
+};
 
 test('Can build GardenRecord', () => {
     const honey = new GardenRecord(defaultObj);

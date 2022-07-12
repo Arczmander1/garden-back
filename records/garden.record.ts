@@ -43,7 +43,6 @@ export class GardenRecord implements GardenEntity {
             id,
         }) as GardenRecordResults;
 
-
         return results.length === 0 ? null : new GardenRecord(results[0]);
     }
 
@@ -56,7 +55,7 @@ export class GardenRecord implements GardenEntity {
             const {id} = result;
             return {id};
         });
-    }
+    };
 
     async insert(): Promise<void> {
 

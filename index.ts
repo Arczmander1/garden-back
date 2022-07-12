@@ -17,13 +17,13 @@ app.use(rateLimit({
         windowMs: 10 * 60 * 1000,
         max: 100,
     })
-)
+);
 
 app.get('/', async () => {
     throw new ValidationError('Mamy problem')
-})
+});
 
-app.use('/garden', gardenRouter)
+app.use('/garden', gardenRouter);
 
 app.use(handleError);
 

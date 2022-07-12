@@ -1,1 +1,1 @@
-export * from './garden'
+export * from './garden';

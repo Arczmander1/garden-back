@@ -3,7 +3,7 @@ import {pool} from "../utils/db";
 import {GardenEntity} from "../types";
 
 afterAll(async () => {
-    await pool.execute("DELETE FROM `honeys` WHERE `name`= 'x----Jakis name'" , this)
+    await pool.execute("DELETE FROM `honeys` WHERE `name`= 'x----Jakis name'" , this);
     await pool.end();
 })
 
