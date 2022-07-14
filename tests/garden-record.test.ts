@@ -16,7 +16,7 @@ test('Can build GardenRecord', () => {
     expect(honey.capacity).toBe(12)
 });
 
-test('Can build GardenRecord', () => {
+test('Validates price length', () => {
 
     expect(() => new GardenRecord({
         ...defaultObj,
@@ -24,7 +24,7 @@ test('Can build GardenRecord', () => {
     })).toThrow('Cena nie może być większa niż 999 zł.');
 });
 
-test('Can build GardenRecord', () => {
+test('Validates capacity length', () => {
 
     expect(() => new GardenRecord({
         ...defaultObj,
@@ -32,7 +32,7 @@ test('Can build GardenRecord', () => {
     })).toThrow('Proszę podać poprawną pojemność produktu, nie może ona przekraczać 99l.');
 });
 
-test('Can build GardenRecord', () => {
+test('Validates origin length', () => {
 
     expect(() => new GardenRecord({
         ...defaultObj,
@@ -40,7 +40,7 @@ test('Can build GardenRecord', () => {
     })).toThrow('Pochodzenie produktu nie może być puste i musi mieć mniej niż 50 znaków.');
 });
 
-test('Can build GardenRecord', () => {
+test('Validates if name is empty', () => {
 
     expect(() => new GardenRecord({
         ...defaultObj,
@@ -48,7 +48,7 @@ test('Can build GardenRecord', () => {
     })).toThrow('Pochodzenie produktu nie może być puste i musi mieć mniej niż 50 znaków.')
 });
 
-test('Can build GardenRecord', () => {
+test('Validates if name is empty', () => {
 
     expect(() => new GardenRecord({
         ...defaultObj,
@@ -56,7 +56,7 @@ test('Can build GardenRecord', () => {
     })).toThrow('Nazwa produktu nie może być pusta i musi mieć mniej niż 50 znaków.');
 });
 
-test('Can build GardenRecord', () => {
+test('Validates name length', () => {
 
     expect(() => new GardenRecord({
         ...defaultObj,

@@ -46,6 +46,13 @@ export class GardenRecord implements GardenEntity {
         return results.length === 0 ? null : new GardenRecord(results[0]);
     }
 
+        async delete(): Promise<void> {
+        await pool.execute("DELETE FROM `honeys` WHERE id = :id", {
+            id: this.id,
+        });
+    }
+
+
     static async findAll(name: string): Promise<SimpleGardenEntity[]> {
         const [results] = await pool.execute("SELECT * FROM `honeys` WHERE `name` LIKE :search", {
             search: `%${name}%`,
@@ -55,6 +62,12 @@ export class GardenRecord implements GardenEntity {
             const {id} = result;
             return {id};
         });
+    };
+
+    static async listAll(): Promise<GardenRecord[]> {
+        const [results] = await pool.execute("SELECT * FROM `honeys`") as GardenRecordResults;
+
+        return results.map(result => new GardenRecord(result))
     };
 
     async insert(): Promise<void> {
@@ -67,4 +80,5 @@ export class GardenRecord implements GardenEntity {
 
         await pool.execute("INSERT INTO `honeys`(`id`, `name`, `price`, `origin`,`capacity`) VALUES(:id, :name, :price, :origin, :capacity)", this);
     }
+
 }

@@ -12,3 +12,7 @@ export interface GardenEntity extends SimpleGardenEntity {
     origin: string;
     capacity: number;
 }
+
+
+
+
